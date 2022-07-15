@@ -4,8 +4,10 @@
 class Engine
 {
 private:
-    // global
+    // global variables
+
     static Engine *s_Instance;
+    static bool s_IsRunning;
 
 public:
     Engine();
@@ -21,7 +23,8 @@ public:
     void Clean();
     // Game Quit
     void Quit();
-    // global
+
+    // global functions
     static Engine *GetInstance();
     ~Engine();
 };

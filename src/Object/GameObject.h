@@ -7,7 +7,7 @@ class GameObject
 private:
     /* data */
 public:
-    GameObject(/* args */) {}
+    GameObject() {}
     ~GameObject() {}
     virtual void render() = 0;
     virtual void update() = 0;
