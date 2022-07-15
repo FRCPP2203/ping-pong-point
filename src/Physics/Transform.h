@@ -6,7 +6,7 @@ class Transform
 private:
     /* data */
 public:
-    Transform(/* args */) {}
+    Transform() {}
     ~Transform() {}
 };
 #endif // __TRANSFORM_H__

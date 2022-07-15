@@ -1,6 +1,7 @@
 #ifndef __IOBJECT_H__
 #define __IOBJECT_H__
 
+// Object Interface
 class IObject
 {
 public:

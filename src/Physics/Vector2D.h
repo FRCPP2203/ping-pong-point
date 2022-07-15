@@ -37,6 +37,19 @@ public:
     Vector2D() : _X(0), m_Y(0) {}
     Vector2D(T p_X, T p_Y) : m_X(p_X), m_Y(p_y) {}
 
+    Vector2D<T> &Ones()
+    {
+        this->m_X = 1;
+        this->m_Y = 1;
+        return *this;
+    }
+    Vector2D<T> &Zeros()
+    {
+        this->m_X = 0;
+        this->m_Y = 0;
+        return *this;
+    }
+
     friend Vector2D<T> &operator+(Vector2D<T> &p_A, const Vector2D<T> &p_B)
     {
 
@@ -75,9 +88,20 @@ public:
         return this->m_Divide(p_B);
     }
 
+    Vector2D<T> &operator*(T i)
+    {
+        this->m_X *= i;
+        this->m_Y *= i;
+        return *this;
+    }
+
+    void print()
+    {
+        std::cout << m_X << ", " << m_Y << std::endl;
+    }
     friend std::ostream &operator<<(std::ostream output, const Vector2D &p_Vec)
     {
-        output << "(X, Y) = (" << p_Vec.m_X << ", " << p_Vec.m_Y << ")\n";
+        output << "(" << p_Vec.m_X << ", " << p_Vec.m_Y << ")\n";
         return output;
     }
 };
