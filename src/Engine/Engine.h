@@ -25,7 +25,10 @@ public:
 
     bool IsRunning();
     // global functions
-    inline static Engine *GetInstance();
+    inline static Engine *GetInstance()
+    {
+        return s_Instance = (s_Instance == nullptr) ? new Engine() : s_Instance;
+    }
     ~Engine();
 };
 #endif // __ENGINE_H__
