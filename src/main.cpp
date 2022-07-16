@@ -6,4 +6,5 @@ int main(int, char **)
     Engine::GetInstance()->Loop();
     Engine::GetInstance()->Clean();
     Engine::GetInstance()->Quit();
+    return 0;
 }
