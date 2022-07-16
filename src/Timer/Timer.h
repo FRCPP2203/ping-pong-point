@@ -1,31 +1,18 @@
 #ifndef __TIMER_H__
 #define __TIMER_H__
 
-#include <SDL.h>
-
+#include "time.h"
+const int TARGET_FPS = 60;
+const float TARGET_DELTATIME = 1.5f;
 class Timer
 {
 private:
-    Timer();
-    ~Timer();
-    // global variables
-    float mDeltaTime;
-    float mTimeScale;
-    unsigned int mStartTicks; //m_LastTime;
-    unsigned int mElapsedTicks;
-
-    static Timer* sInstance;
+    float m_DeltaTime;
+    float m_LastTime;
+    static Timer *s_Instance;
 
 public:
-
-    static Timer* Instance();
-    static void Release();
-
-    void Reset();
-    float Timescale();
-    void Update();
-
-/*
+    Timer();
     void Tick();
     inline float GetDeltaTime()
     {
@@ -33,10 +20,7 @@ public:
     }
     inline static Timer *GetInstance()
     {
-        return s_Instance = (s_Instance == nullptr) ? new Timer() : s_Instance;
-    }
-    ~Timer();
-*/
-
+        return s_Instance = (s_Instance != nullptr) ? s_Instance : new Timer();
+    };
 };
 #endif // __TIMER_H__

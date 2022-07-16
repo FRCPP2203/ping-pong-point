@@ -1,58 +1,19 @@
 #include "Timer.h"
 
-Timer *Timer::sInstance = nullptr;
-Timer* Timer::Instance(){
+Timer *Timer::s_Instance = nullptr;
 
-    if(sInstance == NULL) sInstance = new Timer();
-    return sInstance;
+Timer::Timer()
+{
 }
 
-void Timer::Release(){
+void Timer::Tick()
+{
+    m_DeltaTime = (clock() - m_LastTime) * (TARGET_FPS / 1000.0f);
 
-    delete sInstance;
-    sInstance = NULL;
+    if (m_DeltaTime > TARGET_DELTATIME)
+    {
+        m_DeltaTime = TARGET_DELTATIME;
+    }
 
-
-}
-
-Timer::Timer(){
-
-    Reset();
-    mTimeScale = 1.0f;
-
-}
-
-Timer::~Timer(){
-
-}
- void Timer::Reset(){
-    mStartTicks = clock();
-    //mStartTicks = SDL_GetTicks();
-    mElapsedTicks = 0;
-    mDeltaTime = 0.0f;
-}
-
-float Timer::DeltaTime(){
-
-    return mDeltaTime;
-}
-
-void Timer::TimeScale(float t){
-
-    mTimeScale = t;
-}
-
-float Timer::TimeScale(){
-
-    return mTimeScale;
-}
-
-void Timer::Update(){
-
-    mElapsedTicks = clock() - mStartTicks;
-    mDeltaTime = mElapsedTicks* 0.001f;
-    double fps = 1/mDeltaTime;
-    mStartTicks = clock();
-    //mElapsedTicks = SDL_GetTicks() - mStartTicks;
-    //mDeltaTime = mElapsedTicks* 0.001f;
+    m_LastTime = clock();
 }
