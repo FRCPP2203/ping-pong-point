@@ -18,7 +18,6 @@ public:
     void SetColor(int p_BgColor, int p_TxtColor);
     // Hide Cursor
     void HideCurSor(BOOL p_SHow = true);
-
     // Change Console Window Size
     void SetWindowSize(SHORT p_W, SHORT p_H);
     // Change Screen Buffer Size

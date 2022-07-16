@@ -25,9 +25,8 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     Screen::GetInstance()->DisableResizeWindow();
     Screen::GetInstance()->ShowScrollbar(0);
     Screen::GetInstance()->HideCurSor(1);
-    /*
-     */
 
+    // draw borders
     for (i = 2; i <= 79; i++)
     {
         // draw top side
