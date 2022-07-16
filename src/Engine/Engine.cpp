@@ -11,7 +11,7 @@ void Engine::Init()
 {
     // create windows
 
-    // init Map or Entities
+    // init Map or Entities (Ball and Bars)
 }
 
 void Engine::Loop()
