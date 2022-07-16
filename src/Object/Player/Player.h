@@ -1,13 +1,15 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
+#include <iostream>
 #include "../GameObject.h"
 class Player : public GameObject
 {
 private:
-    /* data */
+    char *m_Name;
 public:
     Player();
+    Player(char *p_Name);
     // render player object
     virtual void render();
     // update player object

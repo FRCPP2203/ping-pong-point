@@ -1,6 +1,8 @@
 #ifndef __ENGINE_H__
 #define __ENGINE_H__
 
+#include <conio.h>
+#include <windows.h>
 class Engine
 {
 private:
@@ -23,6 +25,9 @@ public:
     // Game Quit
     void Quit();
 
+
+    // handle events 
+    void HandleEvents();
     bool IsRunning();
     // global functions
     inline static Engine *GetInstance()
