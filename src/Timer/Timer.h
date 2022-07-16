@@ -1,8 +1,6 @@
 #ifndef __TIMER_H__
 #define __TIMER_H__
 
-#include <chrono>
-#include <ctime>
 class Timer
 {
 private:
@@ -15,8 +13,14 @@ private:
 
 public:
     void Tick();
-    inline float GetDeltaTime();
-    inline static Timer *GetInstance();
+    inline float GetDeltaTime()
+    {
+        return m_DeltaTime;
+    }
+    inline static Timer *GetInstance()
+    {
+        return s_Instance = (s_Instance == nullptr) ? new Timer() : s_Instance;
+    }
     ~Timer();
 };
 #endif // __TIMER_H__

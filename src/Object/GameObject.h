@@ -2,7 +2,7 @@
 #define __GAMEOBJECT_H__
 
 #include "IObject.h"
-class GameObject
+class GameObject : public IObject
 {
 private:
     /* data */

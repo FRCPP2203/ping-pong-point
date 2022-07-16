@@ -45,11 +45,6 @@ bool Engine::IsRunning()
     return s_IsRunning;
 }
 
-Engine *Engine::GetInstance()
-{
-    return s_Instance = (s_Instance == nullptr) ? new Engine() : s_Instance;
-}
-
 Engine::~Engine()
 {
 }
