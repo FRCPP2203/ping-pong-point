@@ -10,7 +10,7 @@ bool Engine::s_IsRunning = false;
 Player *l_Player = nullptr;
 Player *r_Player = nullptr;
 Ball *ball = nullptr;
-
+int i;
 Engine::Engine()
 {
 }
@@ -19,14 +19,33 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
 {
     // Create Window
     Screen::GetInstance()->Init("Ping Pong Game");
+    Screen::GetInstance()->SetWindowSize(79, 25);
+    Screen::GetInstance()->SetScreenBufferSize(79, 25);
     Screen::GetInstance()->DisableCtrButton(0, 1, 1);
-    Screen::GetInstance()->SetWindowSize(60, 20);
     Screen::GetInstance()->DisableResizeWindow();
     Screen::GetInstance()->ShowScrollbar(0);
     Screen::GetInstance()->HideCurSor(1);
     /*
-    Screen::GetInstance()->SetScreenBufferSize(100, 100);
-    */
+     */
+
+    for (i = 2; i <= 79; i++)
+    {
+        // draw top side
+        Screen::GetInstance()->GoTo(i, 1);
+        std::cout << '*';
+        // draw bottom side
+        Screen::GetInstance()->GoTo(i, 25);
+        std::cout << '*';
+    }
+    for (i = 1; i <= 25; i++)
+    {
+        // draw left side
+        Screen::GetInstance()->GoTo(2, i);
+        std::cout << '*';
+        // draw right side
+        Screen::GetInstance()->GoTo(79, i);
+        std::cout << '*';
+    }
 
     // init Players(Bars) and Ball
     l_Player = new Player("Tin");

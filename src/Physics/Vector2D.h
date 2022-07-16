@@ -34,8 +34,8 @@ private:
     }
 
 public:
-    Vector2D() : _X(0), m_Y(0) {}
-    Vector2D(T p_X, T p_Y) : m_X(p_X), m_Y(p_y) {}
+    Vector2D() : m_X(0), m_Y(0) {}
+    Vector2D(T p_X, T p_Y) : m_X(p_X), m_Y(p_Y) {}
 
     Vector2D<T> &Ones()
     {

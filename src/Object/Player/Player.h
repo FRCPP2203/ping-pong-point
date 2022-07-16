@@ -6,10 +6,11 @@
 class Player : public GameObject
 {
 private:
-    char *m_Name;
+    const char *m_Name;
+
 public:
     Player();
-    Player(char *p_Name);
+    Player(const char *p_Name);
     // render player object
     virtual void render();
     // update player object

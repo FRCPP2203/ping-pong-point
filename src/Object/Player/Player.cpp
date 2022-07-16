@@ -3,7 +3,7 @@ Player::Player()
 {
 }
 
-Player::Player(char *p_Name)
+Player::Player(const char *p_Name)
     : m_Name(p_Name)
 {
 }
