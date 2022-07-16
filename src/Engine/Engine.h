@@ -13,7 +13,7 @@ private:
 
 public:
     // Create window and objects
-    void Init();
+    void Init(const char *p_Title, SHORT p_W, SHORT p_H);
     // Game loop
     void Loop();
     // Game render Entities and Map
@@ -25,8 +25,7 @@ public:
     // Game Quit
     void Quit();
 
-
-    // handle events 
+    // handle events
     void HandleEvents();
     bool IsRunning();
     // global functions
