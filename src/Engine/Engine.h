@@ -4,13 +4,12 @@
 class Engine
 {
 private:
+    Engine();
     // global variables
-
     static Engine *s_Instance;
     static bool s_IsRunning;
 
 public:
-    Engine();
     // Create window and objects
     void Init();
     // Game loop
@@ -24,8 +23,9 @@ public:
     // Game Quit
     void Quit();
 
+    bool IsRunning();
     // global functions
-    static Engine *GetInstance();
+    inline static Engine *GetInstance();
     ~Engine();
 };
 #endif // __ENGINE_H__

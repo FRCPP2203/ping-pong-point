@@ -1,5 +1,5 @@
 #include "Engine.h"
-
+#include "../Timer/Timer.h"
 Engine *Engine::s_Instance = nullptr;
 bool Engine::s_IsRunning = false;
 
@@ -16,7 +16,12 @@ void Engine::Init()
 
 void Engine::Loop()
 {
+    const int FPS = 60;
+    const int frameDelay = 1000 / FPS;
     // Is running
+    while (IsRunning())
+    {
+    }
 }
 
 void Engine::Render()
@@ -33,6 +38,11 @@ void Engine::Clean()
 
 void Engine::Quit()
 {
+}
+
+bool Engine::IsRunning()
+{
+    return s_IsRunning;
 }
 
 Engine *Engine::GetInstance()
