@@ -6,8 +6,6 @@ template <typename T>
 class Vector2D
 {
 private:
-    T m_X;
-    T m_Y;
     inline Vector2D<T> &m_Add(const Vector2D<T> &p_Vec)
     {
         this->m_X += p_Vec.m_X;
@@ -34,6 +32,8 @@ private:
     }
 
 public:
+    T m_X;
+    T m_Y;
     Vector2D() : m_X(0), m_Y(0) {}
     Vector2D(T p_X, T p_Y) : m_X(p_X), m_Y(p_Y) {}
 
@@ -99,10 +99,10 @@ public:
     {
         std::cout << m_X << ", " << m_Y << std::endl;
     }
-    friend std::ostream &operator<<(std::ostream output, const Vector2D &p_Vec)
+    friend std::ostream &operator<<(std::ostream p_Out, const Vector2D &p_Vec)
     {
-        output << "(" << p_Vec.m_X << ", " << p_Vec.m_Y << ")\n";
-        return output;
+        p_Out << "(" << p_Vec.m_X << ", " << p_Vec.m_Y << ")\n";
+        return p_Out;
     }
 };
 #endif // __VECTOR2D_H__
