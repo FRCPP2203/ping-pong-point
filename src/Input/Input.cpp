@@ -6,6 +6,11 @@ Input::Input()
 {
 }
 
+void Input::Listen()
+{
+    
+}
+
 Input::~Input()
 {
 }

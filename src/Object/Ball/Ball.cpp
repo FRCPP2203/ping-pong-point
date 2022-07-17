@@ -4,6 +4,13 @@ Ball::Ball()
 {
 }
 
+Ball::Ball(Vector2D<int> posBall)
+{
+    m_originalPosBall = posBall;
+    m_posBall = posBall;
+    
+}
+
 void Ball::render(Screen *p_Screen)
 {
 }

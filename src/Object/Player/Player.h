@@ -11,7 +11,7 @@ class Player : public GameObject
 private:
     const char *m_Name;
     bool m_Left = 1;
-
+    
 public:
     Player();
     Player(const char *p_Name, bool p_Left);
