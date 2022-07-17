@@ -8,7 +8,7 @@
 
 class GameObject : public IObject
 {
-private:
+protected:
     const char *m_ObjID;
     Vector2D<float> m_Pos;
     Transform *m_Transform;

@@ -46,6 +46,16 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
         std::cout << '*';
     }
 
+    Screen::GetInstance()->GoTo(4, 3);
+    std::cout << "SCORE : 0";
+    Screen::GetInstance()->GoTo(50, 3);
+    std::cout << "Press Esc key to quit game";
+    for (i = 3; i <= 78; i++)
+    {
+        Screen::GetInstance()->GoTo(i, 4);
+        std::cout << '-';
+    }
+
     // init Players(Bars) and Ball
     l_Player = new Player("Tin", 1);
     r_Player = new Player("Dat", 0);
