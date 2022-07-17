@@ -10,11 +10,10 @@ class Player : public GameObject
 {
 private:
     const char *m_Name;
-    bool m_Left = 1;
-    
+
 public:
     Player();
-    Player(const char *p_Name, bool p_Left);
+    Player(const char *p_Name, Vector2D<float> p_Pos);
     // render player object
     virtual void render(Screen *p_Screen);
     // update player object

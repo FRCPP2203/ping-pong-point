@@ -18,7 +18,7 @@ Engine::Engine()
 {
 }
 
-void Engine::Init(const char *p_Title, SHORT p_W,  SHORT p_H)
+void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
 {
     // Create Window
     Screen::GetInstance()->Init(p_Title);
@@ -60,9 +60,9 @@ void Engine::Init(const char *p_Title, SHORT p_W,  SHORT p_H)
     }
 
     // init Players(Bars) and Ball
-    l_Player = new Player("Tin", 1);
-    r_Player = new Player("Dat", 0);
-    ball = new Ball(Vector2D<float> (p_W/2 , p_H /2));
+    l_Player = new Player("Tin", Vector2D<float>(5, p_H));
+    r_Player = new Player("Dat", Vector2D<float>(76, p_H));
+    ball = new Ball(Vector2D<float>(p_W / 2, p_H / 2));
 
     s_IsRunning = true;
 }
@@ -78,7 +78,6 @@ void Engine::Loop()
         HandleEvents();
         Update();
         Render();
-        
     }
 }
 

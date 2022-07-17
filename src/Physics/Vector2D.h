@@ -52,7 +52,6 @@ public:
 
     friend Vector2D<T> &operator+(Vector2D<T> &p_A, const Vector2D<T> &p_B)
     {
-
         return p_A.m_Add(p_B);
     }
     friend Vector2D<T> &operator-(Vector2D<T> &p_A, const Vector2D<T> &p_B)
