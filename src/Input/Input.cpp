@@ -6,7 +6,15 @@ Input *Input::s_Instance = nullptr;
 
 Input::Input()
 {
+}
+
+void Input::KeyUp()
+{
     
+}
+
+void Input::KeyDown()
+{
     
 }
 
@@ -18,8 +26,6 @@ void Input::Listen()
         switch (keyBoard)
         {
         case 27:
-        case 'q':
-        case 'z':
             Engine::s_IsRunning = false;
             break;
         
@@ -27,6 +33,11 @@ void Input::Listen()
             break;
         }
     }
+}
+
+bool Input::GetKeyDown(char key)
+{
+    return 1;
 }
 
 Input::~Input()

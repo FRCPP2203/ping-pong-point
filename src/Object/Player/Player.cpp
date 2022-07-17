@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "../../Input/Input.h"
 Player::Player()
 {
 }
@@ -21,6 +22,14 @@ void Player::render(Screen *p_Screen)
 
 void Player::update(float p_DeltaTime)
 {
+    if(Input::GetInstance()->GetKeyDown('w'))
+    {
+        m_Transform->TranslateY(UPWARD);
+    }
+    if(Input::GetInstance()->GetKeyDown('s'))
+    {
+        m_Transform->TranslateY(DOWNWARD);
+    }
 }
 
 void Player::clean()
