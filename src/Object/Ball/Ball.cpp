@@ -4,19 +4,20 @@ Ball::Ball()
 {
 }
 
-Ball::Ball(Vector2D<int> posBall)
+Ball::Ball(Vector2D<float> p_Pos)
+:GameObject("ball",p_Pos)
 {
-    m_originalPosBall = posBall;
-    m_posBall = posBall;
-    
 }
 
 void Ball::render(Screen *p_Screen)
 {
+    p_Screen->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y);
+    std::cout << "O";
 }
 
 void Ball::update(float p_DeltaTime)
 {
+
 }
 void Ball::clean()
 {

@@ -12,8 +12,9 @@ void Player::render(Screen *p_Screen)
 {
     char l = m_Left ? ']' : '[';
     int bar_height = 5;
-    int draw_at = m_Left ? 5 : 76;
-    for (int i = 0; i <= bar_height; i++)
+    int draw_at = m_Left ?5 : 76;
+
+    for(int i = 1; i <= bar_height; i++)
     {
         p_Screen->GoTo(draw_at, 5 + i);
         std::cout << l;

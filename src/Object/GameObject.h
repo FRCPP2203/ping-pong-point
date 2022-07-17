@@ -10,15 +10,14 @@ class GameObject : public IObject
 {
 protected:
     const char *m_ObjID;
-    Vector2D<float> m_Pos;
     Transform *m_Transform;
 
 public:
     GameObject() {}
     GameObject(const char *p_ObjID, Vector2D<float> p_Pos)
-        : m_ObjID(p_ObjID), m_Pos(p_Pos)
+        : m_ObjID(p_ObjID)
     {
-        m_Transform = new Transform();
+        m_Transform = new Transform(p_Pos.m_X, p_Pos.m_Y);
     }
     virtual void render(Screen *p_Screen) = 0;
     virtual void update(float p_DeltaTime) = 0;

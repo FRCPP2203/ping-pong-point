@@ -41,7 +41,7 @@ void Screen::HideCurSor(BOOL p_SHow)
     SetConsoleCursorInfo(handle, &ConCurInf);
 }
 
-void Screen::SetWindowSize(SHORT p_W, SHORT p_H)
+void Screen::SetWindowSize(SHORT p_W,  SHORT p_H)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -54,7 +54,7 @@ void Screen::SetWindowSize(SHORT p_W, SHORT p_H)
     SetConsoleWindowInfo(hStdout, 1, &WindowSize);
 }
 
-void Screen::SetScreenBufferSize(SHORT p_W, SHORT p_H)
+void Screen::SetScreenBufferSize(SHORT p_W,  SHORT p_H)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 

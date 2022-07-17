@@ -7,12 +7,12 @@
 class Ball : public GameObject
 {
 private:
-    /* data */
-    Vector2D<int> m_posBall;                    //position of ball
-    Vector2D<int> m_originalPosBall;            //original position of ball
+
+    
 public:
-    Ball();                         //default constructor
-    Ball(Vector2D<int> posBall);
+    //default constructor
+    Ball();
+    Ball(Vector2D<float> p_Pos);
     // render ball object
     virtual void render(Screen *p_Screen);
     // update ball object

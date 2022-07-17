@@ -1,9 +1,12 @@
 #include "Engine.h"
 #include "../Screen/Screen.h"
 #include "../Timer/Timer.h"
+#include "../Input/Input.h"
 #include "../Object/Player/Player.h"
 #include "../Object/Ball/Ball.h"
+#include <fstream>
 
+std::ofstream record("res/delta_time.txt");
 Engine *Engine::s_Instance = nullptr;
 Screen *Screen::s_Instance = nullptr;
 bool Engine::s_IsRunning = false;
@@ -15,10 +18,10 @@ Engine::Engine()
 {
 }
 
-void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
+void Engine::Init(const char *p_Title, SHORT p_W,  SHORT p_H)
 {
     // Create Window
-    Screen::GetInstance()->Init("Ping Pong Game");
+    Screen::GetInstance()->Init(p_Title);
     Screen::GetInstance()->SetWindowSize(79, 25);
     Screen::GetInstance()->SetScreenBufferSize(79, 25);
     Screen::GetInstance()->DisableCtrButton(0, 1, 1);
@@ -27,30 +30,30 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     Screen::GetInstance()->HideCurSor(1);
 
     // draw borders
-    for (i = 2; i <= 79; i++)
+    for (i = 2; i < p_W; i++)
     {
         // draw top side
         Screen::GetInstance()->GoTo(i, 1);
-        std::cout << '*';
+        std::cout << "\xDB";
         // draw bottom side
-        Screen::GetInstance()->GoTo(i, 25);
-        std::cout << '*';
+        Screen::GetInstance()->GoTo(i, p_H - 1);
+        std::cout << "\xDB";
     }
-    for (i = 1; i <= 25; i++)
+    for (i = 1; i < p_H; i++)
     {
         // draw left side
         Screen::GetInstance()->GoTo(2, i);
-        std::cout << '*';
+        std::cout << "\xDB";
         // draw right side
-        Screen::GetInstance()->GoTo(79, i);
-        std::cout << '*';
+        Screen::GetInstance()->GoTo(p_W - 1, i);
+        std::cout << "\xDB";
     }
 
     Screen::GetInstance()->GoTo(4, 3);
     std::cout << "SCORE : 0";
     Screen::GetInstance()->GoTo(50, 3);
     std::cout << "Press Esc key to quit game";
-    for (i = 3; i <= 78; i++)
+    for (i = 3; i <= p_W - 2; i++)
     {
         Screen::GetInstance()->GoTo(i, 4);
         std::cout << '-';
@@ -59,7 +62,7 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     // init Players(Bars) and Ball
     l_Player = new Player("Tin", 1);
     r_Player = new Player("Dat", 0);
-    ball = new Ball();
+    ball = new Ball(Vector2D<float> (p_W/2 , p_H /2));
 
     s_IsRunning = true;
 }
@@ -75,6 +78,7 @@ void Engine::Loop()
         HandleEvents();
         Update();
         Render();
+        
     }
 }
 
@@ -88,6 +92,7 @@ void Engine::Render()
 void Engine::Update()
 {
     float dt = Timer::GetInstance()->GetDeltaTime();
+    record << dt << "\n";
     l_Player->update(dt);
     r_Player->update(dt);
     ball->update(dt);
@@ -102,11 +107,13 @@ void Engine::Clean()
 
 void Engine::Quit()
 {
+    record.close();
     exit(0);
 }
 
 void Engine::HandleEvents()
 {
+    Input::GetInstance()->Listen();
 }
 
 bool Engine::IsRunning()
