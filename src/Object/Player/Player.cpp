@@ -10,7 +10,7 @@ Player::Player(const char *p_Name, Vector2D<float> p_Pos)
 
 void Player::render(Screen *p_Screen)
 {
-    char l = '-';
+    char l = '|';
     int bar_height = 5;
     for (int i = 1; i <= bar_height; i++)
     {
