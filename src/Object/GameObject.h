@@ -4,6 +4,8 @@
 #include "IObject.h"
 #include "../Physics/Transform.h"
 #include "../Physics/Vector2D.h"
+#include "../Screen/Screen.h"
+
 class GameObject : public IObject
 {
 private:
@@ -18,8 +20,8 @@ public:
     {
         m_Transform = new Transform();
     }
-    virtual void render() = 0;
-    virtual void update() = 0;
+    virtual void render(Screen *p_Screen) = 0;
+    virtual void update(float p_DeltaTime) = 0;
     virtual void clean() = 0;
 };
 #endif // __GAMEOBJECT_H__

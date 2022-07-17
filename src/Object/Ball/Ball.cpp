@@ -4,14 +4,13 @@ Ball::Ball()
 {
 }
 
-void Ball::render()
+void Ball::render(Screen *p_Screen)
 {
 }
 
-void Ball::update()
+void Ball::update(float p_DeltaTime)
 {
 }
-
 void Ball::clean()
 {
 }

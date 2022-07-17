@@ -1,0 +1,5 @@
+https://codelearn.io/sharing/toan-hoc-game-vector-dai-so-tuyen-tinh
+
+Rigidbody có tác dụng điều khiển vị trí của vật thể thông qua hệ thống mô phỏng vật lý
+không cần bất kỳ script nào nó cũng có thể di chuyển và xử lý hướng khi va chạm (nếu có Collider)
+Đồng thời chúng ta cũng có thể tác động vào Rigidbody bằng script như điều chỉnh vận tốc (velocity), vận tốc xoay (angular velocity),…

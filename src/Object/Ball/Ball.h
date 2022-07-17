@@ -2,6 +2,8 @@
 #define __BALL_H__
 
 #include "../GameObject.h"
+#include "../../Screen/Screen.h"
+
 class Ball : public GameObject
 {
 private:
@@ -9,9 +11,9 @@ private:
 public:
     Ball();
     // render ball object
-    virtual void render();
+    virtual void render(Screen *p_Screen);
     // update ball object
-    virtual void update();
+    virtual void update(float p_DeltaTime);
     // clean ball object
     virtual void clean();
     ~Ball();

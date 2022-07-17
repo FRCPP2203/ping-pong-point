@@ -47,8 +47,8 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     }
 
     // init Players(Bars) and Ball
-    l_Player = new Player("Tin");
-    r_Player = new Player("Dat");
+    l_Player = new Player("Tin", 1);
+    r_Player = new Player("Dat", 0);
     ball = new Ball();
 
     s_IsRunning = true;
@@ -70,16 +70,17 @@ void Engine::Loop()
 
 void Engine::Render()
 {
-    l_Player->render();
-    r_Player->render();
-    ball->render();
+    l_Player->render(Screen::GetInstance());
+    r_Player->render(Screen::GetInstance());
+    ball->render(Screen::GetInstance());
 }
 
 void Engine::Update()
 {
-    l_Player->update();
-    r_Player->update();
-    ball->update();
+    float dt = Timer::GetInstance()->GetDeltaTime();
+    l_Player->update(dt);
+    r_Player->update(dt);
+    ball->update(dt);
 }
 
 void Engine::Clean()
