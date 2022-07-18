@@ -15,7 +15,7 @@ public:
     Player();
     Player(const char *p_Name, Vector2D<float> p_Pos);
     // render player object
-    virtual void render(Screen *p_Screen);
+    virtual void render();
     // update player object
     virtual void update(float p_DeltaTime);
     // clean  player object

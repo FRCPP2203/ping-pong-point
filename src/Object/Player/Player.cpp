@@ -9,24 +9,24 @@ Player::Player(const char *p_Name, Vector2D<float> p_Pos)
 {
 }
 
-void Player::render(Screen *p_Screen)
+void Player::render()
 {
     char l = '|';
     int bar_height = 5;
     for (int i = 1; i <= bar_height; i++)
     {
-        p_Screen->GoTo(m_Transform->m_Position.m_X, (m_Transform->m_Position.m_Y - 5) / 2 + i);
+        Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, (m_Transform->m_Position.m_Y - 5) / 2 + i);
         std::cout << l;
     }
 }
 
 void Player::update(float p_DeltaTime)
 {
-    if(Input::GetInstance()->GetKeyDown('w'))
+    if (Input::GetInstance()->GetKeyDown('w'))
     {
         m_Transform->TranslateY(UPWARD);
     }
-    if(Input::GetInstance()->GetKeyDown('s'))
+    if (Input::GetInstance()->GetKeyDown('s'))
     {
         m_Transform->TranslateY(DOWNWARD);
     }

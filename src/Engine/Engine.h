@@ -1,6 +1,7 @@
 #ifndef __ENGINE_H__
 #define __ENGINE_H__
-
+#define _WINDOW_WIDTH 80
+#define _WINDOW_HEIGHT 26
 #include <conio.h>
 #include <windows.h>
 class Engine
@@ -12,7 +13,7 @@ private:
 
 public:
     // Create window and objects
-    void Init(const char *p_Title, SHORT p_W,  SHORT p_H);
+    void Init(const char *p_Title, SHORT p_W, SHORT p_H);
     // Game loop
     void Loop();
     // Game render Entities and Map
@@ -26,6 +27,7 @@ public:
 
     // handle events
     void HandleEvents();
+    //
     bool IsRunning();
     // global functions and variables
     inline static Engine *GetInstance()
@@ -34,10 +36,6 @@ public:
     }
 
     static bool s_IsRunning;
-    //logic
-    void Logic();
-    //clean window
-    void CleanSystem();
     ~Engine();
 };
 #endif // __ENGINE_H__

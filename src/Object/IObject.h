@@ -6,7 +6,7 @@
 class IObject
 {
 public:
-    virtual void render(Screen *p_Screen) = 0;
+    virtual void render() = 0;
     virtual void update(float p_DeltaTime) = 0;
     virtual void clean() = 0;
 };

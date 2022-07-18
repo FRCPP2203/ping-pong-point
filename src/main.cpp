@@ -1,8 +1,9 @@
 #include <iostream>
 #include "Engine/Engine.h"
+
 int main(int, char **)
 {
-    Engine::GetInstance()->Init("Ping Pong Game", 80, 26);
+    Engine::GetInstance()->Init("Ping Pong Game", _WINDOW_WIDTH, _WINDOW_HEIGHT);
     Engine::GetInstance()->Loop();
     Engine::GetInstance()->Clean();
     Engine::GetInstance()->Quit();

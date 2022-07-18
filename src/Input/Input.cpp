@@ -10,12 +10,10 @@ Input::Input()
 
 void Input::KeyUp()
 {
-    
 }
 
 void Input::KeyDown()
 {
-    
 }
 
 void Input::Listen()
@@ -28,7 +26,7 @@ void Input::Listen()
         case 27:
             Engine::s_IsRunning = false;
             break;
-        
+
         default:
             break;
         }
