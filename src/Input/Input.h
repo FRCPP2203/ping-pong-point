@@ -7,7 +7,7 @@ private:
     Input();
     void KeyUp();
     void KeyDown();
-    // const Uint8 *m_KeyStates;
+    // const SHORT m_KeyStates;
     // global variables
     static Input *s_Instance;
 
@@ -17,7 +17,7 @@ public:
         return s_Instance = (s_Instance == nullptr) ? new Input() : s_Instance;
     }
     void Listen();
-    // bool GetKeyDown(SDL_Scancode key);
+    bool GetKeyDown(char key);
     ~Input();
 };
 #endif // __INPUT_H__

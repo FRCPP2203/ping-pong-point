@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include "Vector2D.h"
+
+#define FORWARD 1
+#define BACKWARD -1
+#define UPWARD -1
+#define DOWNWARD 1
 class Transform
 {
 public:
