@@ -5,6 +5,7 @@
 #include "../Object/Player/Player.h"
 #include "../Object/Ball/Ball.h"
 #include <fstream>
+#include <unistd.h>
 
 std::ofstream record("res/delta_time.txt");
 Engine *Engine::s_Instance = nullptr;
@@ -72,12 +73,28 @@ void Engine::Loop()
     // delta time = (current time - last time) / 1000
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
+    
+    uint32_t frameStart;
+    int frameTime;
     // Is running
     while (IsRunning())
     {
+        frameStart = clock();
         HandleEvents();
         Update();
         Render();
+        Timer::GetInstance()->Tick();
+        
+        frameTime = clock() - frameStart;
+        if(frameDelay > frameTime)
+        {	
+            clock_t start_time = clock(); 
+            sleep(frameDelay-frameTime);//delay a moment = frameDelay - frameTime; 
+            // while(clock() < (frameDelay-frameTime)){
+            //     //delay a moment = frameDelay - frameTime;      
+            //     //while   
+            // }
+        }
     }
 }
 
