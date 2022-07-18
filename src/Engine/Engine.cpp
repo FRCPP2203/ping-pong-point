@@ -23,8 +23,8 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
 {
     // Create Window
     Screen::GetInstance()->Init(p_Title);
-    Screen::GetInstance()->SetWindowSize(79, 30);
-    Screen::GetInstance()->SetScreenBufferSize(79, 30);
+    Screen::GetInstance()->SetWindowSize(79, 25);
+    Screen::GetInstance()->SetScreenBufferSize(79, 25);
     Screen::GetInstance()->DisableCtrButton(0, 1, 1);
     Screen::GetInstance()->DisableResizeWindow();
     Screen::GetInstance()->ShowScrollbar(0);
@@ -50,10 +50,15 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
         std::cout << "\xDB";
     }
 
-    Screen::GetInstance()->GoTo(4, 28);
+    Screen::GetInstance()->GoTo(4, 3);
     std::cout << "SCORE : 0";
-    Screen::GetInstance()->GoTo(50, 28);
+    Screen::GetInstance()->GoTo(50, 3);
     std::cout << "Press Esc key to quit game";
+    for (i = 3; i <= p_W - 2; i++)
+    {
+        Screen::GetInstance()->GoTo(i, 4);
+        std::cout << '-';
+    }
 
     // init Players(Bars) and Ball
     l_Player = new Player("Tin", Vector2D<float>(5, p_H));
@@ -83,7 +88,7 @@ void Engine::Loop()
         frameTime = clock() - frameStart;
         if(frameDelay > frameTime)
         {	
-            clock_t start_time = clock(); 
+            //clock_t start_time = clock(); 
             sleep(frameDelay-frameTime);//delay a moment = frameDelay - frameTime; 
             // while(clock() < (frameDelay-frameTime)){
             //     //delay a moment = frameDelay - frameTime;      
