@@ -5,18 +5,7 @@
 #include "../Object/Player/Player.h"
 #include "../Object/Ball/Ball.h"
 #include <fstream>
-
-/*
-enum eDir{
-    STOP = 0,
-    LEFT = 1,
-    UPLEFT = 2,
-    DOWNLEFT = 3,
-    RIGHT = 4,
-    UPRIGHT = 5,
-    DOWNRIGHT = 6
-};
-*/
+#include <windows.h>
 
 #define STOP         Vector2D<float>(0, 0)
 #define LEFT         Vector2D<float>(-1, 0)
@@ -38,9 +27,8 @@ int i;
 
 Engine::Engine()
 {
+    
 }
-
-
 
 void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
 {
@@ -87,14 +75,14 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     l_Player = new Player("Tin", Vector2D<float>(5, p_H));
     r_Player = new Player("Dat", Vector2D<float>(76, p_H));
     ball = new Ball(Vector2D<float>(p_W / 2, p_H / 2));
-    ball->ChangeDirection(DOWNRIGHT);
+    ball->ChangeDirection(DOWNLEFT);
     s_IsRunning = true;
 }
 
 void Engine::Loop()
 {
     // delta time = (current time - last time) / 1000
-    const int FPS = 60;
+    const int FPS = 30;
     const int frameDelay = 1000 / FPS;
     
     uint32_t frameStart;
@@ -113,32 +101,22 @@ void Engine::Loop()
         frameTime = clock() - frameStart;
         if(frameDelay > frameTime)
         {	
-            //clock_t start_time = clock(); 
-            sleep(frameDelay-frameTime);//delay a moment = frameDelay - frameTime; 
-            // while(clock() < (frameDelay-frameTime)){
-            //     //delay a moment = frameDelay - frameTime;      
-            //     //while   
-            // }
+            Sleep(frameDelay-frameTime);//delay a moment = frameDelay - frameTime; 
         }
+        
     }
 }
 
 void Engine::CleanSystem()
 {
-    for(int i = 6; i < 78; i++)
-    {
-        for(int j = 2; j < 25; j++)
-        {
-            Screen::GetInstance()->GoTo(i, j);
-            std::cout << " ";
-        }
-    }
+    ball->CleanBall(Screen::GetInstance());
+
 }
 
 void Engine::Render()
 {
-    l_Player->render(Screen::GetInstance());
-    r_Player->render(Screen::GetInstance());
+    //l_Player->render(Screen::GetInstance());
+    //r_Player->render(Screen::GetInstance());
     ball->render(Screen::GetInstance());
 }
 
@@ -146,13 +124,19 @@ void Engine::Logic()
 {
     //Top wall
     if(ball->getPosition().m_Y == 2){
-        ball->getDirection() -= UPRIGHT;
-        ball->ChangeDirection( ball->getDirection().m_X == 0 && ball->getDirection().m_Y == 0 ? DOWNRIGHT : DOWNLEFT);
+        ball->ChangeDirection( ball->getDirection().m_X == 1 && ball->getDirection().m_Y == -1 ? DOWNRIGHT : DOWNLEFT);
     }
     //Bottom wall
     if(ball->getPosition().m_Y == 24){
-        ball->getDirection() -= DOWNRIGHT;
-        ball->ChangeDirection( ball->getDirection().m_X == 0 && ball->getDirection().m_Y == 0 ? UPRIGHT : UPLEFT);
+        ball->ChangeDirection( ball->getDirection().m_X == 1 && ball->getDirection().m_Y == 1 ? UPRIGHT : UPLEFT);
+    }
+    //left wall
+    if(ball->getPosition().m_X == 3){
+        ball->ChangeDirection( ball->getDirection().m_X == -1 && ball->getDirection().m_Y == -1 ? UPRIGHT : DOWNRIGHT);
+    }
+    //right wall
+    if(ball->getPosition().m_X == 78){
+        ball->ChangeDirection( ball->getDirection().m_X == 1 && ball->getDirection().m_Y == 1 ? DOWNLEFT : UPLEFT);
     }
 }
 

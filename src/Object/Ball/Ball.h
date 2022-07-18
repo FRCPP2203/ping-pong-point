@@ -21,6 +21,7 @@ public:
     virtual void ChangeDirection(Vector2D<float> direction);
     Vector2D<float> getDirection();
     Vector2D<float> getPosition();
+    virtual void CleanBall(Screen *p_Screen);
     ~Ball();
 };
 #endif // __BALL_H__
