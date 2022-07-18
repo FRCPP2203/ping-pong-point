@@ -61,7 +61,7 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
         std::cout << "\xDB";
     }
 
-    // Screen::GetInstance()->GoTo(4, 3);
+    /* Screen::GetInstance()->GoTo(4, 3);
     // std::cout << "SCORE : 0";
     // Screen::GetInstance()->GoTo(50, 3);
     // std::cout << "Press Esc key to quit game";
@@ -70,13 +70,25 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     //     Screen::GetInstance()->GoTo(i, 4);
     //     std::cout << '-';
     // }
-
+    */
     // init Players(Bars) and Ball
     l_Player = new Player("Tin", Vector2D<float>(5, p_H));
     r_Player = new Player("Dat", Vector2D<float>(76, p_H));
     ball = new Ball(Vector2D<float>(p_W / 2, p_H / 2));
     ball->ChangeDirection(DOWNLEFT);
     s_IsRunning = true;
+}
+
+void Engine::Menu()
+{
+        Screen::GetInstance()->GoTo(35, 13);
+        std::cout << "Press [B] to Begin" << std::endl;
+        Screen::GetInstance()->GoTo(35, 14);
+        std::cout << "Press [Q] to Quit" << std::endl;
+        Screen::GetInstance()->GoTo(35, 15);
+        std::cout << "Press here: " << std::endl;
+        Screen::GetInstance()->GoTo(48, 15);        
+        ///getchar();
 }
 
 void Engine::Loop()
