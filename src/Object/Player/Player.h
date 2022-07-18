@@ -5,7 +5,7 @@
 #include <windows.h>
 #include "../GameObject.h"
 #include "../../Screen/Screen.h"
-
+#include "../Ball/Ball.h"
 class Player : public GameObject
 {
 private:
@@ -23,7 +23,7 @@ public:
     virtual void clean();
 
     // count score
-    void countScore(Vector2D<float> p_Vec);
+    void countScore(Ball &p_Ball);
 
     ~Player();
 };

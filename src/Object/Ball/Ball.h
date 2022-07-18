@@ -21,6 +21,7 @@ public:
     // clean ball object
     virtual void clean();
 
+    void setPosition(Vector2D<float> p_Pos);
     Vector2D<float> getPosition();
     ~Ball();
 };
