@@ -10,6 +10,7 @@ class Player : public GameObject
 {
 private:
     const char *m_Name;
+    int m_Score = 0;
 
 public:
     Player();
@@ -20,6 +21,10 @@ public:
     virtual void update(float p_DeltaTime);
     // clean  player object
     virtual void clean();
+
+    // count score
+    void countScore(Vector2D<float> p_Vec);
+
     ~Player();
 };
 #endif // __PLAYER_H__

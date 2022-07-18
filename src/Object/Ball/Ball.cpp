@@ -45,6 +45,11 @@ void Ball::clean()
 {
 }
 
+Vector2D<float> Ball::getPosition()
+{
+    return m_Transform->m_Position;
+}
+
 Ball::~Ball()
 {
 }

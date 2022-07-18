@@ -106,7 +106,9 @@ void Engine::Update()
     float dt = Timer::GetInstance()->GetDeltaTime();
     record << dt << "\n";
     l_Player->update(dt);
+    l_Player->countScore(ball->getPosition());
     r_Player->update(dt);
+    r_Player->countScore(ball->getPosition());
     ball->update(dt);
 }
 

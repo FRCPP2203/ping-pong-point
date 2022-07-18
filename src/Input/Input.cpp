@@ -8,14 +8,6 @@ Input::Input()
 {
 }
 
-void Input::KeyUp()
-{
-}
-
-void Input::KeyDown()
-{
-}
-
 void Input::Listen()
 {
     if (_kbhit())
@@ -33,9 +25,13 @@ void Input::Listen()
     }
 }
 
-bool Input::GetKeyDown(char key)
+bool Input::GetKeyDown(int key)
 {
-    return 1;
+    if (GetKeyState(key) & 0x8000)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 Input::~Input()

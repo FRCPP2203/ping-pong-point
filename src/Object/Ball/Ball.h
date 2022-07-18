@@ -20,6 +20,8 @@ public:
     virtual void update(float p_DeltaTime);
     // clean ball object
     virtual void clean();
+
+    Vector2D<float> getPosition();
     ~Ball();
 };
 #endif // __BALL_H__
