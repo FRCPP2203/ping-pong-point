@@ -5,6 +5,7 @@
 #include "../Object/Player/Player.h"
 #include "../Object/Ball/Ball.h"
 #include <fstream>
+
 /*
 enum eDir{
     STOP = 0,
@@ -16,6 +17,7 @@ enum eDir{
     DOWNRIGHT = 6
 };
 */
+
 #define STOP         Vector2D<float>(0, 0)
 #define LEFT         Vector2D<float>(-1, 0)
 #define UPLEFT       Vector2D<float>(-1, -1)
@@ -23,6 +25,7 @@ enum eDir{
 #define RIGHT        Vector2D<float>(1, 0)
 #define UPRIGHT      Vector2D<float>(1, -1)
 #define DOWNRIGHT    Vector2D<float>(1, 1)
+#include <unistd.h>
 
 std::ofstream record("res/delta_time.txt");
 Engine *Engine::s_Instance = nullptr;
@@ -43,8 +46,8 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
 {
     // Create Window
     Screen::GetInstance()->Init(p_Title);
-    Screen::GetInstance()->SetWindowSize(79, 30);
-    Screen::GetInstance()->SetScreenBufferSize(79, 30);
+    Screen::GetInstance()->SetWindowSize(79, 25);
+    Screen::GetInstance()->SetScreenBufferSize(79, 25);
     Screen::GetInstance()->DisableCtrButton(0, 1, 1);
     Screen::GetInstance()->DisableResizeWindow();
     Screen::GetInstance()->ShowScrollbar(0);
@@ -70,10 +73,15 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
         std::cout << "\xDB";
     }
 
-    Screen::GetInstance()->GoTo(4, 28);
-    std::cout << "SCORE : 0";
-    Screen::GetInstance()->GoTo(50, 28);
-    std::cout << "Press Esc key to quit game";
+    // Screen::GetInstance()->GoTo(4, 3);
+    // std::cout << "SCORE : 0";
+    // Screen::GetInstance()->GoTo(50, 3);
+    // std::cout << "Press Esc key to quit game";
+    // for (i = 3; i <= p_W - 2; i++)
+    // {
+    //     Screen::GetInstance()->GoTo(i, 4);
+    //     std::cout << '-';
+    // }
 
     // init Players(Bars) and Ball
     l_Player = new Player("Tin", Vector2D<float>(5, p_H));
@@ -88,20 +96,39 @@ void Engine::Loop()
     // delta time = (current time - last time) / 1000
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
+    
+    uint32_t frameStart;
+    int frameTime;
     // Is running
     while (IsRunning())
     {
+        frameStart = clock();
         CleanSystem();
         HandleEvents();
         Update();
         Render();
         Logic();
+        Timer::GetInstance()->Tick();
+        
+        frameTime = clock() - frameStart;
+        if(frameDelay > frameTime)
+        {	
+            //clock_t start_time = clock(); 
+            sleep(frameDelay-frameTime);//delay a moment = frameDelay - frameTime; 
+            // while(clock() < (frameDelay-frameTime)){
+            //     //delay a moment = frameDelay - frameTime;      
+            //     //while   
+            // }
+        }
     }
 }
 
-void Engine::CleanSystem(){
-    for(int i = 6; i < 78; i++){
-        for(int j = 2; j < 25; j++){
+void Engine::CleanSystem()
+{
+    for(int i = 6; i < 78; i++)
+    {
+        for(int j = 2; j < 25; j++)
+        {
             Screen::GetInstance()->GoTo(i, j);
             std::cout << " ";
         }
@@ -117,7 +144,6 @@ void Engine::Render()
 
 void Engine::Logic()
 {
-    
     //Top wall
     if(ball->getPosition().m_Y == 2){
         ball->getDirection() -= UPRIGHT;
