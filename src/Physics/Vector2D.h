@@ -93,7 +93,11 @@ public:
         this->m_Y *= i;
         return *this;
     }
-    
+    Vector2D<T> &operator =(const Vector2D<T> &p_B){
+        this->m_X = p_B.m_X;
+        this->m_Y = p_B.m_Y;
+        return *this;
+    }
     void print()
     {
         std::cout << m_X << ", " << m_Y << std::endl;

@@ -14,6 +14,8 @@ private:
 public:
     // Create window and objects
     void Init(const char *p_Title, SHORT p_W, SHORT p_H);
+    // Creat begining screen
+    void Menu();
     // Game loop
     void Loop();
     // Game render Entities and Map

@@ -57,6 +57,18 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     s_IsRunning = true;
 }
 
+void Engine::Menu()
+{
+    Screen::GetInstance()->GoTo(35, 13);
+    std::cout << "Press [B] to Begin" << std::endl;
+    Screen::GetInstance()->GoTo(35, 14);
+    std::cout << "Press [Q] to Quit" << std::endl;
+    Screen::GetInstance()->GoTo(35, 15);
+    std::cout << "Press here: " << std::endl;
+    Screen::GetInstance()->GoTo(48, 15);
+    /// getchar();
+}
+
 void Engine::Loop()
 {
 
