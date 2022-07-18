@@ -93,7 +93,7 @@ public:
         this->m_Y *= i;
         return *this;
     }
-
+    
     void print()
     {
         std::cout << m_X << ", " << m_Y << std::endl;

@@ -1,11 +1,5 @@
 #include "Ball.h"
-#define STOP         Vector2D<float>(0, 0)
-#define LEFT         Vector2D<float>(-1, 0)
-#define UPLEFT       Vector2D<float>(-1, -1)
-#define DOWNLEFT     Vector2D<float>(-1, 1)
-#define RIGHT        Vector2D<float>(1, 0)
-#define UPRIGHT      Vector2D<float>(1, -1)
-#define DOWNRIGHT    Vector2D<float>(1, 1)
+
 
 Ball::Ball()
 {
@@ -23,12 +17,26 @@ void Ball::render(Screen *p_Screen)
 }
 
 void Ball::update(float p_DeltaTime)
-{
-    m_Transform->m_Position += UPRIGHT;
-    m_Transform->m_Position += STOP;
+{   
+    m_Transform->m_Position += m_Direction;
 }
 void Ball::clean()
 {
+}
+
+void Ball::ChangeDirection(Vector2D<float> direction)
+{
+    m_Direction = direction;
+}
+
+Vector2D<float> Ball::getDirection()
+{
+    return m_Direction;
+}
+
+Vector2D<float> Ball::getPosition()
+{
+    return m_Transform->m_Position;
 }
 
 Ball::~Ball()

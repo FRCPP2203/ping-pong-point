@@ -7,8 +7,7 @@
 class Ball : public GameObject
 {
 private:
-
-    
+    Vector2D<float> m_Direction;
 public:
     //default constructor
     Ball();
@@ -19,6 +18,9 @@ public:
     virtual void update(float p_DeltaTime);
     // clean ball object
     virtual void clean();
+    virtual void ChangeDirection(Vector2D<float> direction);
+    Vector2D<float> getDirection();
+    Vector2D<float> getPosition();
     ~Ball();
 };
 #endif // __BALL_H__

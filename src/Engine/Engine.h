@@ -33,9 +33,11 @@ public:
         return s_Instance = (s_Instance == nullptr) ? new Engine() : s_Instance;
     }
 
-
     static bool s_IsRunning;
-
+    //logic
+    void Logic();
+    //clean window
+    void CleanSystem();
     ~Engine();
 };
 #endif // __ENGINE_H__
