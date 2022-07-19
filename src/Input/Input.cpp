@@ -18,7 +18,9 @@ void Input::Listen()
         case 27:
             Engine::s_IsRunning = false;
             break;
+        case 'r':
 
+            break;
         default:
             break;
         }
