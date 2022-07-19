@@ -51,8 +51,8 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
         std::cout << "\xDB";
     }
     // init Players(Bars) and Ball
-    l_Player = new Player("Tin", Vector2D<float>(5, p_H));
-    r_Player = new Player("Dat", Vector2D<float>(76, p_H));
+    l_Player = new Player("Tin", Vector2D<float>(5, 10));
+    r_Player = new Player("Dat", Vector2D<float>(76, 10));
     ball = new Ball(Vector2D<float>(p_W / 2, p_H / 2));
     s_IsRunning = true;
 }
