@@ -9,7 +9,6 @@
 class Player : public GameObject
 {
 private:
-    const char *m_Name;
     int m_Score = 0;
 
 public:
@@ -24,7 +23,6 @@ public:
 
     // count score
     void countScore(Ball &p_Ball);
-
     ~Player();
 };
 #endif // __PLAYER_H__
