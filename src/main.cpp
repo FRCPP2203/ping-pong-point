@@ -1,10 +1,9 @@
 #include <iostream>
+#include <stdlib.h>
 #include "Engine/Engine.h"
-
 char start = 'X';
 int main()
 {
-    srand(time(NULL));
     do
     {
         Engine::GetInstance()->Menu();

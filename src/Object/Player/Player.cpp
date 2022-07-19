@@ -18,6 +18,7 @@ void Player::render()
     for (int i = 1; i <= bar_height; i++)
     {
         Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y + i);
+        // std::cout << m_Transform->m_Position.m_X << ":" << m_Transform->m_Position.m_Y;
         std::cout << l;
     }
 }
@@ -49,7 +50,6 @@ void Player::clean()
 
 void Player::countScore(Ball &p_Ball)
 {
-
     Vector2D<float> tmp = p_Ball.getPosition();
     if (p_Ball.getPosition().m_X == m_Transform->m_Position.m_X && (p_Ball.getPosition().m_Y < m_Transform->m_Position.m_Y || p_Ball.getPosition().m_Y > m_Transform->m_Position.m_Y + 4))
     {

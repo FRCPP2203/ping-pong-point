@@ -34,13 +34,13 @@ void Ball::update(float p_DeltaTime)
     // BALL MOVE
     m_Transform->m_Position += m_Velocity;
     // RIGHT WALL AND LEFT WALL
-    if (m_Transform->m_Position.m_X < 7 || m_Transform->m_Position.m_X > 74)
+    if (m_Transform->m_Position.m_X < 6 || m_Transform->m_Position.m_X > 74)
     {
         m_Velocity.m_X = -m_Velocity.m_X;
         m_Transform->m_Position.m_X += m_Velocity.m_X;
     }
     // TOP WALL AND BOTTOM WALL
-    if (m_Transform->m_Position.m_Y < 2 || m_Transform->m_Position.m_Y > 24)
+    if (m_Transform->m_Position.m_Y < 3 || m_Transform->m_Position.m_Y > 22)
     {
         m_Velocity.m_Y = -m_Velocity.m_Y;
         m_Transform->m_Position.m_Y += m_Velocity.m_Y;
@@ -62,8 +62,10 @@ Vector2D<float> Ball::getPosition()
 
 Vector2D<float> Ball::randDirection()
 {
-    int m_random = rand() % (4 - 1 + 1) + 1;
-    switch (m_random)
+    srand(time(0));
+
+    int random = rand() % 4 + 1;
+    switch (random)
     {
     case 1:
         return DOWNLEFT;
