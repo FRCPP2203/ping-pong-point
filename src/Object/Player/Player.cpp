@@ -19,6 +19,7 @@ void Player::render()
     {
         Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y + i);
         std::cout << l;
+        std::cout << m_Transform->m_Position.m_X << " " << m_Transform->m_Position.m_Y + i;
     }
 }
 
@@ -29,7 +30,7 @@ void Player::update(float p_DeltaTime)
     {
         Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y + i);
         std::cout << ' ';
-        // std::cout << "         ";
+        std::cout << "      ";
     }
     if (Input::GetInstance()->GetKeyDown('W'))
     {   
@@ -49,21 +50,21 @@ void Player::clean()
 
 void Player::countScore(Ball &p_Ball)
 {
-    
-    Vector2D<float> tmp = p_Ball.getPosition();
+    /*
     if (p_Ball.getPosition().m_X == m_Transform->m_Position.m_X && (p_Ball.getPosition().m_Y < m_Transform->m_Position.m_Y || p_Ball.getPosition().m_Y > m_Transform->m_Position.m_Y + 4))
     {   
         p_Ball.setPosition(Vector2D<float>(40, 13));
     }
     else if (p_Ball.getPosition().m_X == m_Transform->m_Position.m_X && (p_Ball.getPosition().m_Y > m_Transform->m_Position.m_Y || p_Ball.getPosition().m_Y < m_Transform->m_Position.m_Y + 4))
     {
-        p_Ball.setPosition(tmp);
         if (m_Score > 1)
         {
             m_Score = 0;
         }
         m_Score += 1;
     }
+    */
+    
 }
 
 Player::~Player()

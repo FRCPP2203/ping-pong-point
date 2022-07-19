@@ -24,6 +24,7 @@ public:
 
     void setPosition(Vector2D<float> p_Pos);
     Vector2D<float> getPosition();
+    Vector2D<float> ranDirection();
     void Reset();
     ~Ball();
 };

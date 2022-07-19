@@ -4,6 +4,7 @@
 char start = 'X';
 int main()
 {
+    srand(time(NULL));
     do
     {
         Engine::GetInstance()->Menu();
