@@ -16,7 +16,7 @@ void Input::Listen()
         switch (keyBoard)
         {
         case 27:
-            Engine::s_IsRunning = false;
+            Engine::s_IsRunning = true;
             break;
 
         default:

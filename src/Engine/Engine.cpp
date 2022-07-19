@@ -83,7 +83,7 @@ void Engine::Loop()
     {
 
         frameStart = clock();
-        HandleEvents();
+        //HandleEvents();
         Update();
         Render();
         Timer::GetInstance()->Tick();
@@ -94,6 +94,14 @@ void Engine::Loop()
             Sleep(frameDelay - frameTime); // delay a moment = frameDelay - frameTime;
         }
     }
+    system("cls");
+    Screen::GetInstance()->GoTo(35, 14);
+    std::cout << "Nhan ESC de thoat!! ";
+    while (!IsRunning())
+    {
+        HandleEvents();
+    }
+    
 }
 
 void Engine::Render()

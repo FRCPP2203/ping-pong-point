@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "../../Input/Input.h"
+#include "../../Engine/Engine.h"
 #include <conio.h>
 #include <iostream>
 Player::Player()
@@ -71,6 +72,7 @@ void Player::countScore(Ball &p_Ball)
             m_Score = 0;
             Screen::GetInstance()->GoTo(35, 28);
             std::cout << "PLAYER WIN: " << m_ObjID;
+            Engine::s_IsRunning = false;
         }
         m_Score++;
     }
