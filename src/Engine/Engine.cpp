@@ -27,8 +27,8 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     int boardH = 26;
     // Create Window
     Screen::GetInstance()->Init(p_Title);
-    Screen::GetInstance()->SetWindowSize(p_W, p_H);
-    Screen::GetInstance()->SetScreenBufferSize(p_W, p_H);
+    Screen::GetInstance()->SetWindowSize(p_W + 2, p_H + 2);
+    Screen::GetInstance()->SetScreenBufferSize(p_W + 2, p_H + 2);
     Screen::GetInstance()->DisableCtrButton(0, 1, 1);
     Screen::GetInstance()->DisableResizeWindow();
     Screen::GetInstance()->ShowScrollbar(0);
