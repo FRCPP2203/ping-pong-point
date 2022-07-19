@@ -11,6 +11,7 @@ private:
     Vector2D<float> m_Direction;
     Vector2D<float> m_originalPos;
     int m_random;
+
 public:
     // default constructor
     Ball();
@@ -24,6 +25,7 @@ public:
 
     void setPosition(Vector2D<float> p_Pos);
     Vector2D<float> getPosition();
+    Vector2D<float> randDirection();
     void Reset();
     ~Ball();
 };

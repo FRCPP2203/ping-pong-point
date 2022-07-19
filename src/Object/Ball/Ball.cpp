@@ -1,4 +1,5 @@
 #include "Ball.h"
+#include <time.h>
 
 #define STOP Vector2D<float>(0, 0)
 #define LEFT Vector2D<float>(-1, 0)
@@ -17,7 +18,7 @@ Ball::Ball(Vector2D<float> p_Pos)
 {
     m_originalPos = p_Pos;
     m_Velocity = Vector2D<float>(1.0f, 1.0f);
-    m_Direction = UPLEFT;
+    m_Direction = randDirection();
 }
 
 void Ball::render()
@@ -59,32 +60,33 @@ Vector2D<float> Ball::getPosition()
     return m_Transform->m_Position;
 }
 
-void Ball::Reset()
+Vector2D<float> Ball::randDirection()
 {
-    srand(time(NULL));
-    m_Transform->m_Position.m_X = m_originalPos.m_X;
-    m_Transform->m_Position.m_Y = m_originalPos.m_Y;
-    m_random = rand() % 6 + 2;
+    m_random = rand() % 6 + 3;
     switch (m_random)
     {
+    case 1:
+        return LEFT;
     case 2:
-        m_Velocity = UPLEFT;
-        break;
+        return RIGHT;
     case 3:
-        m_Velocity = DOWNLEFT;
-        break;
+        return DOWNLEFT;
     case 4:
-        m_Velocity = RIGHT;
-        break;
+        return UPLEFT;
     case 5:
-        m_Velocity = UPRIGHT;
-        break;
+        return UPRIGHT;
     case 6:
-        m_Velocity = DOWNRIGHT;
-        break;
+        return DOWNRIGHT;
     default:
-        break;
+        return DOWNRIGHT;
     }
+}
+
+void Ball::Reset()
+{
+    m_Transform->m_Position.m_X = m_originalPos.m_X;
+    m_Transform->m_Position.m_Y = m_originalPos.m_Y;
+    m_Direction = randDirection();
 }
 
 Ball::~Ball()
