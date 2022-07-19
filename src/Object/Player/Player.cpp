@@ -31,14 +31,12 @@ void Player::update(float p_DeltaTime)
         std::cout << ' ';
     }
     if (Input::GetInstance()->GetKeyDown('W'))
-    {   
-        if(m_Transform->m_Position.m_Y > 0)
-            m_Transform->TranslateY(UPWARD);
+    {
+        m_Transform->TranslateY(UPWARD);
     }
     if (Input::GetInstance()->GetKeyDown('S'))
     {
-        if(m_Transform->m_Position.m_Y < 22)
-            m_Transform->TranslateY(DOWNWARD);
+        m_Transform->TranslateY(DOWNWARD);
     }
 }
 
@@ -48,14 +46,16 @@ void Player::clean()
 
 void Player::countScore(Ball &p_Ball)
 {
-    if (p_Ball.getPosition().m_X == 5 )
+    Vector2D<float> tmp = p_Ball.getPosition();
+    if (p_Ball.getPosition().m_X == m_Transform->m_Position.m_X && (p_Ball.getPosition().m_Y < m_Transform->m_Position.m_Y || p_Ball.getPosition().m_Y > m_Transform->m_Position.m_Y + 4))
     {
         p_Ball.setPosition(Vector2D<float>(40, 13));
         Screen::GetInstance()->GoTo(10, 20);
-        //std::cout << "YOU LOSE ! Press 'r' or ENTER to play again !";
+        // std::cout << "YOU LOSE ! Press 'r' or ENTER to play again !";
     }
-    else if (p_Ball.getPosition().m_X == 6 && (p_Ball.getPosition().m_Y < p_Ball.getPosition().m_Y || p_Ball.getPosition().m_Y > p_Ball.getPosition().m_Y + 4))
+    else if (p_Ball.getPosition().m_X == m_Transform->m_Position.m_X && (p_Ball.getPosition().m_Y > m_Transform->m_Position.m_Y || p_Ball.getPosition().m_Y < m_Transform->m_Position.m_Y + 4))
     {
+        p_Ball.setPosition(tmp);
         if (m_Score > 1)
         {
             Screen::GetInstance()->GoTo(10, 20);
