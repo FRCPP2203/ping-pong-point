@@ -9,8 +9,6 @@ class Ball : public GameObject
 private:
     Vector2D<float> m_Velocity;
     Vector2D<float> m_Direction;
-    Vector2D<float> m_originalPos;
-    int m_random;
 
 public:
     // default constructor
@@ -26,7 +24,6 @@ public:
     void setPosition(Vector2D<float> p_Pos);
     Vector2D<float> getPosition();
     Vector2D<float> randDirection();
-    void Reset();
     ~Ball();
 };
 #endif // __BALL_H__

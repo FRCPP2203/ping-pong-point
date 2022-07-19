@@ -34,28 +34,28 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
     Screen::GetInstance()->ShowScrollbar(0);
     Screen::GetInstance()->HideCurSor(1);
     // draw borders
-    for (i = 2; i < boardW; i++)
+    for (i = 2; i < 80; i++)
     {
         // draw top side
         Screen::GetInstance()->GoTo(i, 1);
         std::cout << "\xDB";
         // draw bottom side
-        Screen::GetInstance()->GoTo(i, boardH - 1);
+        Screen::GetInstance()->GoTo(i, 25);
         std::cout << "\xDB";
     }
-    for (i = 1; i < boardH; i++)
+    for (i = 1; i < 26; i++)
     {
         // draw left side
         Screen::GetInstance()->GoTo(2, i);
         std::cout << "\xDB";
         // draw right side
-        Screen::GetInstance()->GoTo(boardW - 1, i);
+        Screen::GetInstance()->GoTo(79, i);
         std::cout << "\xDB";
     }
     // init Players(Bars) and Ball
     l_Player = new Player("Tin", Vector2D<float>(5, 10));
     r_Player = new Player("Dat", Vector2D<float>(76, 10));
-    ball = new Ball(Vector2D<float>(boardW / 2, boardH / 2));
+    ball = new Ball(Vector2D<float>(40, 13));
     s_IsRunning = true;
 }
 

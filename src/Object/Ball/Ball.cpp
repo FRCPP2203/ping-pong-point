@@ -16,7 +16,6 @@ Ball::Ball()
 Ball::Ball(Vector2D<float> p_Pos)
     : GameObject("ball", p_Pos)
 {
-    m_originalPos = p_Pos;
     m_Velocity = Vector2D<float>(1.0f, 1.0f);
     m_Direction = randDirection();
 }
@@ -25,6 +24,7 @@ void Ball::render()
 {
     Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y);
     std::cout << "O";
+    // std::cout << m_Transform->m_Position.m_X << " " << m_Transform->m_Position.m_Y;
 }
 
 void Ball::update(float p_DeltaTime)
@@ -32,18 +32,18 @@ void Ball::update(float p_DeltaTime)
     Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y);
     std::cout << " ";
     // BALL MOVE
-    m_Transform->m_Position += m_Direction;
+    m_Transform->m_Position += m_Velocity;
     // RIGHT WALL AND LEFT WALL
     if (m_Transform->m_Position.m_X < 7 || m_Transform->m_Position.m_X > 74)
     {
         m_Velocity.m_X = -m_Velocity.m_X;
-        m_Direction.m_X *= m_Velocity.m_X;
+        m_Transform->m_Position.m_X += m_Velocity.m_X;
     }
     // TOP WALL AND BOTTOM WALL
-    if (m_Transform->m_Position.m_Y < 3 || m_Transform->m_Position.m_Y > 22)
+    if (m_Transform->m_Position.m_Y < 2 || m_Transform->m_Position.m_Y > 24)
     {
         m_Velocity.m_Y = -m_Velocity.m_Y;
-        m_Direction.m_Y *= m_Velocity.m_Y;
+        m_Transform->m_Position.m_Y += m_Velocity.m_Y;
     }
 }
 void Ball::clean()
@@ -62,31 +62,20 @@ Vector2D<float> Ball::getPosition()
 
 Vector2D<float> Ball::randDirection()
 {
-    m_random = rand() % 6 + 3;
+    int m_random = rand() % (4 - 1 + 1) + 1;
     switch (m_random)
     {
     case 1:
-        return LEFT;
-    case 2:
-        return RIGHT;
-    case 3:
         return DOWNLEFT;
-    case 4:
+    case 2:
         return UPLEFT;
-    case 5:
+    case 3:
         return UPRIGHT;
-    case 6:
+    case 4:
         return DOWNRIGHT;
     default:
         return DOWNRIGHT;
     }
-}
-
-void Ball::Reset()
-{
-    m_Transform->m_Position.m_X = m_originalPos.m_X;
-    m_Transform->m_Position.m_Y = m_originalPos.m_Y;
-    m_Direction = randDirection();
 }
 
 Ball::~Ball()
