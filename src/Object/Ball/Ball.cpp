@@ -30,15 +30,15 @@ void Ball::update(float p_DeltaTime)
 {
     Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y);
     std::cout << " ";
-    //BALL MOVE
+    // BALL MOVE
     m_Transform->m_Position += m_Direction;
-    //RIGHT WALL AND LEFT WALL
-    if (m_Transform->m_Position.m_X < 5 || m_Transform->m_Position.m_X > 76)
+    // RIGHT WALL AND LEFT WALL
+    if (m_Transform->m_Position.m_X < 7 || m_Transform->m_Position.m_X > 74)
     {
         m_Velocity.m_X = -m_Velocity.m_X;
         m_Direction.m_X *= m_Velocity.m_X;
     }
-    //TOP WALL AND BOTTOM WALL
+    // TOP WALL AND BOTTOM WALL
     if (m_Transform->m_Position.m_Y < 3 || m_Transform->m_Position.m_Y > 22)
     {
         m_Velocity.m_Y = -m_Velocity.m_Y;
@@ -67,23 +67,23 @@ void Ball::Reset()
     m_random = rand() % 6 + 2;
     switch (m_random)
     {
-        case 2:
-            m_Velocity = UPLEFT;
-            break;
-        case 3:
-            m_Velocity = DOWNLEFT;
-            break;
-        case 4:
-            m_Velocity = RIGHT;
-            break;
-        case 5:
-            m_Velocity = UPRIGHT;
-            break;
-        case 6:
-            m_Velocity = DOWNRIGHT;
-            break;
-        default:
-            break;
+    case 2:
+        m_Velocity = UPLEFT;
+        break;
+    case 3:
+        m_Velocity = DOWNLEFT;
+        break;
+    case 4:
+        m_Velocity = RIGHT;
+        break;
+    case 5:
+        m_Velocity = UPRIGHT;
+        break;
+    case 6:
+        m_Velocity = DOWNRIGHT;
+        break;
+    default:
+        break;
     }
 }
 

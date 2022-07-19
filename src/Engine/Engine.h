@@ -1,7 +1,7 @@
 #ifndef __ENGINE_H__
 #define __ENGINE_H__
 #define _WINDOW_WIDTH 80
-#define _WINDOW_HEIGHT 26
+#define _WINDOW_HEIGHT 45
 #include <conio.h>
 #include <windows.h>
 class Engine

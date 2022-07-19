@@ -2,7 +2,7 @@
 #define __TIMER_H__
 
 #include "time.h"
-const int TARGET_FPS = 15;
+const int TARGET_FPS = 60;
 const float TARGET_DELTATIME = 1.5f;
 class Timer
 {
