@@ -16,8 +16,8 @@ Ball::Ball()
 Ball::Ball(Vector2D<float> p_Pos)
     : GameObject("ball", p_Pos)
 {
-    m_Velocity = Vector2D<float>(1.0f, 1.0f);
-    m_Direction = randDirection();
+    // m_Velocity = Vector2D<float>(1.0f, 1.0f);
+    m_Velocity = randDirection();
 }
 
 void Ball::render()

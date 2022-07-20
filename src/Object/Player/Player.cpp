@@ -77,7 +77,6 @@ void Player::countScore(Ball &p_Ball)
             Screen::GetInstance()->GoTo(35, 28);
             std::cout << "PLAYER WIN: " << m_ObjID;
             Engine::s_IsPausing = true;
-            m_Score = 0;
         }
         else
             m_Score += 1;
