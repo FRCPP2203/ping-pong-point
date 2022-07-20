@@ -12,6 +12,8 @@ std::ofstream record("res/delta_time.txt");
 Engine *Engine::s_Instance = nullptr;
 Screen *Screen::s_Instance = nullptr;
 bool Engine::s_IsRunning = false;
+bool Engine::s_IsPausing = false;
+int Engine::s_State = 0;
 Player *l_Player = nullptr;
 Player *r_Player = nullptr;
 Ball *ball = nullptr;
@@ -61,14 +63,33 @@ void Engine::Init(const char *p_Title, SHORT p_W, SHORT p_H)
 
 void Engine::Menu()
 {
-    Screen::GetInstance()->GoTo(35, 13);
-    std::cout << "Press [B] to Begin" << std::endl;
+    switch (s_State)
+    {
+    case 0:
+        Screen::GetInstance()->GoTo(35, 13);
+        std::cout << "Press [B] to Begin";
+        break;
+    case 1:
+        l_Player->resetScore();
+        r_Player->resetScore();
+        Screen::GetInstance()
+            ->GoTo(35, 13);
+        std::cout << "Press [R] to Play Again";
+        break;
+    default:
+        break;
+    }
     Screen::GetInstance()->GoTo(35, 14);
-    std::cout << "Press [Q] to Quit" << std::endl;
-    Screen::GetInstance()->GoTo(35, 15);
-    std::cout << "Press here: " << std::endl;
-    Screen::GetInstance()->GoTo(48, 15);
+    std::cout << "Press [Q] to Quit";
     /// getchar();
+}
+
+void Engine::CleanMenu()
+{
+    Screen::GetInstance()->GoTo(35, 13);
+    std::cout << "                          ";
+    Screen::GetInstance()->GoTo(35, 14);
+    std::cout << "                          ";
 }
 
 void Engine::Loop()
@@ -83,9 +104,21 @@ void Engine::Loop()
     {
 
         frameStart = clock();
-        //HandleEvents();
-        Update();
-        Render();
+        HandleEvents();
+        if (s_State <= 1)
+        {
+            Menu();
+        }
+        else if (IsPausing())
+        {
+            s_State = 1;
+        }
+        else
+        {
+            CleanMenu();
+            Update();
+            Render();
+        }
         Timer::GetInstance()->Tick();
 
         frameTime = clock() - frameStart;
@@ -94,14 +127,6 @@ void Engine::Loop()
             Sleep(frameDelay - frameTime); // delay a moment = frameDelay - frameTime;
         }
     }
-    system("cls");
-    Screen::GetInstance()->GoTo(35, 14);
-    std::cout << "Nhan ESC de thoat!! ";
-    while (!IsRunning())
-    {
-        HandleEvents();
-    }
-    
 }
 
 void Engine::Render()
@@ -138,6 +163,11 @@ void Engine::Quit()
 void Engine::HandleEvents()
 {
     Input::GetInstance()->Listen();
+}
+
+bool Engine::IsPausing()
+{
+    return s_IsPausing;
 }
 
 bool Engine::IsRunning()

@@ -14,8 +14,10 @@ private:
 public:
     // Create window and objects
     void Init(const char *p_Title, SHORT p_W, SHORT p_H);
-    // Creat begining screen
+    // Creat Menu
     void Menu();
+    // clean menu
+    void CleanMenu();
     // Game loop
     void Loop();
     // Game render Entities and Map
@@ -30,6 +32,7 @@ public:
     // handle events
     void HandleEvents();
     //
+    bool IsPausing();
     bool IsRunning();
     // global functions and variables
     inline static Engine *GetInstance()
@@ -37,6 +40,8 @@ public:
         return s_Instance = (s_Instance == nullptr) ? new Engine() : s_Instance;
     }
 
+    static int s_State;
+    static bool s_IsPausing;
     static bool s_IsRunning;
     ~Engine();
 };

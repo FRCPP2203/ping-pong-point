@@ -2,6 +2,8 @@
 #include "../Engine/Engine.h"
 #include <conio.h>
 #include <windows.h>
+#include <iostream>
+#include "../Screen/Screen.h"
 Input *Input::s_Instance = nullptr;
 
 Input::Input()
@@ -16,10 +18,23 @@ void Input::Listen()
         switch (keyBoard)
         {
         case 27:
-            Engine::s_IsRunning = true;
+        case 'q':
+        case 'Q':
+            Engine::s_IsRunning = false;
+            break;
+        case 'b':
+        case 'B':
+            Engine::s_State = 2;
+            break;
+        case 'p':
+        case 'P':
+            if (Engine::s_State > 0)
+                Engine::s_IsPausing = true;
             break;
         case 'r':
-
+        case 'R':
+            Engine::s_State = 2;
+            Engine::s_IsPausing = false;
             break;
         default:
             break;

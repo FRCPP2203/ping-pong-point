@@ -12,6 +12,11 @@ Player::Player(const char *p_Name, Vector2D<float> p_Pos)
 {
 }
 
+void Player::resetScore()
+{
+    m_Score = 0;
+}
+
 void Player::render()
 {
     char l = '|';
@@ -29,16 +34,16 @@ void Player::render()
 void Player::update(float p_DeltaTime)
 {
     int bar_height = 5;
-    //Clean Player
+    // Clean Player
     for (int i = 1; i <= bar_height; i++)
     {
         Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X, m_Transform->m_Position.m_Y + i);
         std::cout << ' ';
         // std::cout << "         ";
     }
-    //Clear Score
-    //Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X + 7, 28);
-    //std::cout << "   ";
+    // Clear Score
+    // Screen::GetInstance()->GoTo(m_Transform->m_Position.m_X + 7, 28);
+    // std::cout << "   ";
     if (Input::GetInstance()->GetKeyDown('W'))
     {
         if (m_Transform->m_Position.m_Y > 1)
@@ -67,14 +72,15 @@ void Player::countScore(Ball &p_Ball)
     else if (p_Ball.getPosition().m_X == m_Transform->m_Position.m_X && (p_Ball.getPosition().m_Y > m_Transform->m_Position.m_Y || p_Ball.getPosition().m_Y < m_Transform->m_Position.m_Y + 5))
     {
         p_Ball.setPosition(tmp);
-        if (m_Score > 5)
+        if (m_Score > 3)
         {
-            m_Score = 0;
             Screen::GetInstance()->GoTo(35, 28);
             std::cout << "PLAYER WIN: " << m_ObjID;
-            Engine::s_IsRunning = false;
+            Engine::s_IsPausing = true;
+            m_Score = 0;
         }
-        m_Score++;
+        else
+            m_Score += 1;
     }
 }
 

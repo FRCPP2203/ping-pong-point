@@ -14,6 +14,8 @@ private:
 public:
     Player();
     Player(const char *p_Name, Vector2D<float> p_Pos);
+    // reset color
+    void resetScore();
     // render player object
     virtual void render();
     // update player object
